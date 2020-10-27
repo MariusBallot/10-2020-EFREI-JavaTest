@@ -1,0 +1,22 @@
+package sheepDrawing;
+
+public class Line extends GeomForm {
+	
+	private int endX;
+	private int endY;
+
+
+	public Line(int posX, int posY, double rot, double scaleX, double scaleY, int endX, int endY) {
+		super(posX, posY, rot, scaleX, scaleY);
+		
+		this.endX = endX;
+		this.endY = endY;
+
+		
+	}
+	
+	public double getPerim() {
+		return sqrt((this.endX-super.getPosX())*(this.endX-this.posX) + (this.endY-this.posY)*(this.endY-this.posY));;
+	}
+
+}

@@ -1,0 +1,39 @@
+package sheepDrawing;
+
+import java.util.ArrayList;
+
+public class Polygon extends GeomForm {
+
+	ArrayList<int[]> vertices = new ArrayList<int[]>();
+
+	Polygon(int posX, int posY, double rot, double scaleX, double scaleY) {
+		super(posX, posY, rot, scaleX, scaleY);
+	}
+
+	public void addPoint(int x, int y) {
+		int[] vertice = new int[2];
+		vertice[0] = x;
+		vertice[1] = y;
+
+
+		this.vertices.add(vertice);
+		
+
+	}
+
+	public double getAir() {
+
+		double sum = 0;
+
+		for (int i = 0; i < this.vertices.size()-1; i++) {
+			if (i == 0)
+				sum += this.vertices.get(i)[0] * (this.vertices.get(i + 1)[1] - this.vertices.get(this.vertices.size() - 1)[1]);
+			else
+				sum += this.vertices.get(i)[0] * (this.vertices.get(i + 1)[1] - this.vertices.get(i - 1)[1]);
+			
+
+		}
+		return 0.5 * Math.abs(sum);
+	}
+
+}
