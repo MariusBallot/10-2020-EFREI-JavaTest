@@ -1,19 +1,38 @@
 package sheepDrawing;
 
+import java.util.ArrayList;
+
 public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		Polygon p = new Polygon(10, 10, 1, 10, 10);
+		Fresque f = new Fresque();
+		Dessin d = new Dessin();
+		Image i = new Image();
+		Image i2 = new Image();
+
 		
-		p.addPoint(0, 0);
-		p.addPoint(30, 0);
-		p.addPoint(30, 30);
-		p.addPoint(0, 30);
+		Polygon g = new Polygon();
+		Polygon g2 = new Polygon();
+		
+		g.addPoint(10,20);
+		g.addPoint(20,20);
+		g.addPoint(200,20);
+		
+		g2.addPoint(10,20);
+		g2.addPoint(20,10);
+		g2.addPoint(200,20);
 
+		
+		i.addGeomFrom(g);
+		i2.addGeomFrom(g);
 
-		System.out.print(p.getAir());
+		d.addImage(i);
+		d.addImage(i2);
+
+		f.addDessin(d);
+		
 
 	}
 

@@ -1,11 +1,15 @@
 package sheepDrawing;
 
 public class Transform {
-	private int posX;
-	private int posY;
-	private double rot;
+	private int posX=0;
+	private int posY=0;
+	private double rot=0;
 	private double scaleX = 1;
 	private double scaleY = 1;
+	
+	Transform() {
+
+	}
 
 	Transform(int posX, int posY, double rot, double scaleX, double scaleY) {
 		this.posX = posX;

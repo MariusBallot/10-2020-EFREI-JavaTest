@@ -1,18 +1,51 @@
 package sheepDrawing;
 
-public class Ellipse extends GeomForm {
+public class Ellipse extends GeomForm implements Surfaceable{
 	
 	private int air;
 	private int radX;
 	private int radY;
 
 
-	Ellipse(int posX, int posY, double rot, double scaleX, double scaleY, int radX, int radY) {
-		super(posX, posY, rot, scaleX, scaleY);
+	Ellipse(int radX, int radY) {
+		super();
 		this.radX=radX;
 		this.radY=radY;
 	}
 	
+	@Override
+	public String toString() {
+		return "Ellipse [air=" + air + ", radX=" + radX + ", radY=" + radY + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + air;
+		result = prime * result + radX;
+		result = prime * result + radY;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Ellipse other = (Ellipse) obj;
+		if (air != other.air)
+			return false;
+		if (radX != other.radX)
+			return false;
+		if (radY != other.radY)
+			return false;
+		return true;
+	}
+
 	public double getAir() {
 		return this.radX*this.radY*Math.PI;
 	}

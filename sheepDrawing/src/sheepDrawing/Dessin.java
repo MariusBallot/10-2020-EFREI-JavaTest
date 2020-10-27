@@ -1,9 +1,28 @@
 package sheepDrawing;
 
+import java.util.ArrayList;
+
 public class Dessin {
 
-	Dessin(int posX, int posY, double rot, double scaleX, double scaleY){
+	private ArrayList<Image> images = new ArrayList<Image>();
 
-		new Transform(posX,  posY,  rot,  scaleX,  scaleY);
+	Dessin() {
+		Transform transform = new Transform();
+	}
+
+	void addImage(Image obj) {
+		Boolean exists = false;
+
+		for (int i = 0; i < images.size(); i++) {
+			exists = obj.equals(images.get(i));
+		}
+
+		if (exists == true) {
+			System.out.println(obj + "This image already exists");
+			return;
+		}
+
+		images.add(obj);
+
 	}
 }
