@@ -2,6 +2,8 @@ package sheepDrawing;
 
 public class Circle extends GeomForm implements Surfaceable {
 	
+	private int ox;
+	private int oy;
 	private int rad;
 	private int air;
 
@@ -13,11 +15,31 @@ public class Circle extends GeomForm implements Surfaceable {
 		this.rad = rad;
 	}
 
-	Circle(int rad) {
+	Circle(int x, int y, int rad) {
 		super();
+		this.ox = x;
+		this.ox = y;
 		this.rad = rad;
+		
+		super.transform.setObjType(this);
 	}
 	
+	public int getOx() {
+		return ox;
+	}
+
+	public void setOx(int ox) {
+		this.ox = ox;
+	}
+
+	public int getOy() {
+		return oy;
+	}
+
+	public void setOy(int oy) {
+		this.oy = oy;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -45,7 +67,7 @@ public class Circle extends GeomForm implements Surfaceable {
 
 	@Override
 	public String toString() {
-		return "Circle [rad=" + rad + ", air=" + air + "]";
+		return "\n"+Utils.insSpace(3)+"Circle\n"+Utils.insSpace(4)+"rad:" + rad+", ox: "+ox+", oy: "+oy;
 	}
 
 	public double getAir() {

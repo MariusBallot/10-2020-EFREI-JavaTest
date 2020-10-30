@@ -14,4 +14,9 @@ public class Fresque {
 		dessins.add(obj);
 	}
 
+	@Override
+	public String toString() {
+		return "Fresque" + dessins.toString().replace("[", "").replace("]", "");
+	}
+
 }

@@ -11,12 +11,10 @@ public class Ellipse extends GeomForm implements Surfaceable{
 		super();
 		this.radX=radX;
 		this.radY=radY;
+		super.transform.setObjType(this);
+
 	}
-	
-	@Override
-	public String toString() {
-		return "Ellipse [air=" + air + ", radX=" + radX + ", radY=" + radY + "]";
-	}
+
 
 	@Override
 	public int hashCode() {
@@ -52,6 +50,12 @@ public class Ellipse extends GeomForm implements Surfaceable{
 	
 	public double getPerim() {
 		return 2*Math.PI*Math.sqrt((Math.pow(radX, 2)+Math.pow(radY, 2))/2);
+	}
+	
+	
+	@Override
+	public String toString() {
+		return "\n"+Utils.insSpace(3)+"Ellipse\n"+Utils.insSpace(4)+"radX:" + radX + ", radY:" + radY;
 	}
 
 }

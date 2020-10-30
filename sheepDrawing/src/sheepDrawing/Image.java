@@ -2,7 +2,7 @@ package sheepDrawing;
 
 import java.util.ArrayList;
 
-public class Image {
+public class Image implements Surfaceable {
 
 	public Transform transform;
 	private ArrayList<GeomForm> geomForms = new ArrayList<GeomForm>();
@@ -31,7 +31,6 @@ public class Image {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((geomForms == null) ? 0 : geomForms.hashCode());
-		result = prime * result + ((transform == null) ? 0 : transform.hashCode());
 		return result;
 	}
 
@@ -49,12 +48,30 @@ public class Image {
 				return false;
 		} else if (!geomForms.equals(other.geomForms))
 			return false;
-		if (transform == null) {
-			if (other.transform != null)
-				return false;
-		} else if (!transform.equals(other.transform))
-			return false;
 		return true;
+	}
+
+	public double getAir() {
+		double sum = 0;
+
+		for (int i = 0; i < geomForms.size(); i++) {
+			sum += geomForms.get(i).getAir();
+		}
+		return sum;
+	}
+
+	public double getPerim() {
+		double sum = 0;
+
+		for (int i = 0; i < geomForms.size(); i++) {
+			sum += geomForms.get(i).getPerim();
+		}
+		return sum;
+	}
+
+	@Override
+	public String toString() {
+		return "\n"+Utils.insSpace(2)+"Image" + geomForms;
 	}
 
 }

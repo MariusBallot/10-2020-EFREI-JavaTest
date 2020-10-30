@@ -1,33 +1,69 @@
 package sheepDrawing;
 
-public class Line extends GeomForm implements Surfaceable{
-	
+
+public class Line extends GeomForm implements Surfaceable {
+
 	private int startX;
 	private int startY;
 	private int endX;
 	private int endY;
+	private int width;
 
+	private double d;
 
-	public Line(int startX, int startY,int endX, int endY) {
+	public Line(int startX, int startY, int endX, int endY, int width) {
 		super();
 		this.startX = startX;
 		this.startY = startY;
 		this.endX = endX;
 		this.endY = endY;
+		this.width = width;
+
+		d = Math.sqrt(
+				(this.endX - this.startX) * (this.endX - this.startX) + (this.endY - startY) * (this.endY - startY));
 		
-	}
-	
-	public double getPerim() {
-		return Math.sqrt((this.endX-super.transform.getPosX())*(this.endX-super.transform.getPosX()) + (this.endY-super.transform.getPosY())*(this.endY-super.transform.getPosY()));
-	}
-	
-	public double getAir() {
-		return 0;
+		super.transform.setObjType(this);
+			
 	}
 
-	@Override
-	public String toString() {
-		return "Line [startX=" + startX + ", startY=" + startY + ", endX=" + endX + ", endY=" + endY + "]";
+	public double getPerim() {
+		return d + width * 2;
+	}
+
+	public int getStartX() {
+		return startX;
+	}
+
+	public void setStartX(int startX) {
+		this.startX = startX;
+	}
+
+	public int getStartY() {
+		return startY;
+	}
+
+	public void setStartY(int startY) {
+		this.startY = startY;
+	}
+
+	public int getEndX() {
+		return endX;
+	}
+
+	public void setEndX(int endX) {
+		this.endX = endX;
+	}
+
+	public int getEndY() {
+		return endY;
+	}
+
+	public void setEndY(int endY) {
+		this.endY = endY;
+	}
+
+	public double getAir() {
+		return d * width;
 	}
 
 	@Override
@@ -59,6 +95,27 @@ public class Line extends GeomForm implements Surfaceable{
 		if (startY != other.startY)
 			return false;
 		return true;
+	}
+	
+	public int getWidth() {
+		return width;
+	}
+
+	public void setWidth(int width) {
+		this.width = width;
+	}
+
+	public void updateMatrix() {
+		this.startX += super.transform.getPosX();
+		this.startY += super.transform.getPosY();
+		
+		
+	}
+
+	@Override
+	public String toString() {
+		return "\n" + Utils.insSpace(3) + "Line\n" + Utils.insSpace(4) + "startX:" + startX + ", startY:" + startY
+				+ ", endX:" + endX + ", endY:" + endY + ", Length:" + d;
 	}
 
 }
